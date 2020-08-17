@@ -144,7 +144,7 @@ public class Player_Script : MonoBehaviour {
 		PlayingStuff.SetActive(false);
 		Statics.masterMind.gameState = 2;
 		Statics.masterMind.x=60;
-		Statics.masterMind.phase=4;
+		Statics.masterMind.phase=1;
 		#if UNITY_STANDALONE
 		Cursor.visible=true;
 		#endif
