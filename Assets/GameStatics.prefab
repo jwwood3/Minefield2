@@ -43,8 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2535a750bab8742894f796fb04233e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 60
-  phase: 1
+  minX: 20
+  startX: 20
+  x: 20
+  phase: 4
+  minPhase: 4
+  game: 1
   gameState: 1
   HighScores:
   - 0
@@ -73,3 +77,5 @@ MonoBehaviour:
   currentUser: Player 1
   hasPowerUp: 0
   powerUpCountdown: 20
+  pointCountdown: 5
+  pointValue: 20
