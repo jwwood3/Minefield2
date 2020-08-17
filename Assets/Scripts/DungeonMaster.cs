@@ -9,7 +9,9 @@ public class DungeonMaster : MonoBehaviour {
 	private float timer;
 	private float timer2;
 	private float timer3;
+    private float phaseCounter;
     private int curScore;
+    private int subtractor = 0;
 	public TextMeshProUGUI Score;
 	public TextMeshProUGUI CheckPoint;
 	public TextMeshProUGUI HighScore;
@@ -23,10 +25,22 @@ public class DungeonMaster : MonoBehaviour {
 		timer  = 0.0f;
 		timer2 = 0.0f;
 		timer3 = 0.0f;
+        phaseCounter = 0.0f;
         curScore  = 0;
         Statics.masterMind.pointCountdown = 5.0f;
         Statics.masterMind.powerUpCountdown = 20.0f;
 
+    }
+
+    public void resetPhase()
+    {
+        timer = 0.0f;
+        timer2 = 0.0f;
+        timer3 = 0.0f;
+        phaseCounter = 0.0f;
+        Statics.masterMind.pointCountdown = 5.0f;
+        Statics.masterMind.powerUpCountdown = 20.0f;
+        Statics.masterMind.x = Statics.masterMind.minX;
     }
 
     public void scorePoints(int points)
@@ -67,6 +81,7 @@ public class DungeonMaster : MonoBehaviour {
 				timer=0.0f;
 				timer2=0.0f;
 				timer3=0.0f;
+                phaseCounter = 0.0f;
 			}
 			
 		}
@@ -82,19 +97,24 @@ public class DungeonMaster : MonoBehaviour {
             }
 			timer2+=Time.fixedDeltaTime;
 			timer3+=Time.fixedDeltaTime;
+            phaseCounter += Time.fixedDeltaTime;
 			Score.text=curScore.ToString();
 			HighScore.text=(Mathf.Floor(Statics.masterMind.HighScores[0]*10)/10).ToString();
-			CheckPoint.text=(Statics.masterMind.phase).ToString();
-			
-			if(Statics.masterMind.x<=20)//WIP - resets x when the phase increases
+			CheckPoint.text=(Statics.masterMind.phase-(Statics.masterMind.minPhase-1)).ToString();
+
+            
+
+			if(phaseCounter>=Statics.masterMind.startX)//WIP - resets x when the phase increases
 			{
 				Statics.masterMind.phase++;
 				if(Statics.masterMind.phase>7)
 				{
 					Statics.masterMind.phase=7;
 				}
-				Statics.masterMind.x=60;
-			}
+                Statics.masterMind.x = Statics.masterMind.minX;
+                phaseCounter -= Statics.masterMind.startX;
+
+            }
 
             if (!Statics.masterMind.hasPowerUp)
             {
@@ -113,19 +133,31 @@ public class DungeonMaster : MonoBehaviour {
                 Statics.masterMind.pointCountdown = 5.0f;
             }
 
-            //spawn balls every x frames
-            if (timer3>(((float)Statics.masterMind.x)/60.0))
+            //spawn x balls every startx seconds
+            float interval = (((float)Statics.masterMind.startX) / ((float)Statics.masterMind.x));
+            if (timer3>interval)
 			{
 				for(int n=0;n<Statics.masterMind.phase;n++)// 4 balls at start, 5 after checkpoint 1, etc.
 				{
 					Instantiate(Enemy);// spawn ball
 				}
-				timer3=0.0f;
+				timer3-=interval;
 			}
+
+            if (curScore - subtractor >= 100)
+            {
+                subtractor += 100;
+                Statics.masterMind.game++;
+                Statics.masterMind.minX += 5;
+                Statics.masterMind.x = Statics.masterMind.minX;
+                Statics.masterMind.phase = Statics.masterMind.minPhase;
+            }
+
+
 			
-			if(timer2>1)//WIP - decrement x over time
+			if(timer2>2)//WIP - increment x over time
 			{
-				Statics.masterMind.x-=Statics.masterMind.game;
+                Statics.masterMind.x++;
 				timer2=timer2-1.0f;
 			}
 		}

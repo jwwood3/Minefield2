@@ -131,6 +131,7 @@ public class Player_Script : MonoBehaviour {
 			}
 			Statics.masterMind.hasPowerUp=false;
 			Statics.masterMind.powerUpCountdown=20;
+            dm.resetPhase();
 			Destroy(other.gameObject);
 		}
         else if (other.gameObject.tag == "Point")
@@ -149,8 +150,9 @@ public class Player_Script : MonoBehaviour {
 		GameOverStuff.SetActive(true);
 		PlayingStuff.SetActive(false);
 		Statics.masterMind.gameState = 2;
-		Statics.masterMind.x=60;
-		Statics.masterMind.phase=1;
+		Statics.masterMind.x=Statics.masterMind.startX;
+        Statics.masterMind.minX = Statics.masterMind.startX;
+        Statics.masterMind.phase=Statics.masterMind.minPhase;
         Statics.masterMind.game = 1;
 		#if UNITY_STANDALONE
 		Cursor.visible=true;

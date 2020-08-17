@@ -30,7 +30,7 @@ public class Enemy_Script : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if(Statics.masterMind.gameState!=2)
 		{
 			tempVector = newPos;
