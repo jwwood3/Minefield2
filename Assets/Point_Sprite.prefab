@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6069928767169911465}
   - component: {fileID: 6198894655399342785}
   - component: {fileID: 6231814092729062185}
+  - component: {fileID: 9162280925430043696}
   m_Layer: 8
   m_Name: Point_Sprite
   m_TagString: Point
@@ -121,3 +122,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &9162280925430043696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6254961872208981297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d81289c6a6cc2b46be7e32c672d8dea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 6

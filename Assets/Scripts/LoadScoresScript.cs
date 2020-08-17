@@ -5,82 +5,88 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public class LoadScoresScript : MonoBehaviour {
-	public TextMeshProUGUI[] scoreLabels;
-	public TextMeshProUGUI[] scorerLabels;
-	public TextMeshProUGUI ButtonLabel;
+	public TextMeshProUGUI[] scoreLabels = new TextMeshProUGUI[10];
+	public TextMeshProUGUI[] scorerLabels = new TextMeshProUGUI[10];
+    public TextMeshProUGUI ButtonLabel;
 	public TextMeshProUGUI place;
 	public bool isLocal=true;
-	void Start()
-	{
-		Statics.masterMind.downloadHighscores();
-		for(int i=0;i<scoreLabels.Length;i++)
-		{
-			if(isLocal)
-			{
-				scoreLabels[i].text=((float)(Mathf.FloorToInt(Statics.masterMind.HighScores[i]*10))/10.0f).ToString();
-				scorerLabels[i].text=Statics.masterMind.HighScorers[i];
-			}
-			else
-			{
-				scoreLabels[i].text=((float)(Mathf.FloorToInt(Statics.masterMind.scoreList[i].score*10))/10.0f).ToString();
-				scorerLabels[i].text=Statics.masterMind.scoreList[i].username;
-			}
-		}
-		if(isLocal)
-		{
-			int places=Statics.masterMind.findPlayerInLocal(Statics.masterMind.currentUser);
-			if(places==11)
-			{
-				place.text=">10th";
-			}
-			else
-			{
-				place.text=Statics.intToString(places);
-			}
-		}
-		else
-		{
-			int places=Statics.masterMind.findPlayerInRankings(Statics.masterMind.currentUser);
-			if(places==1001)
-			{
-				place.text=">1000th";
-			}
-			else
-			{
-				place.text=Statics.intToString(places);
-			}
-		}
-	}
+    void Start()
+    {
+        getScoreLabels();
+        refresh(1);
+    }
+
+    public void getScoreLabels()
+    {
+        for(int i = 1; i <= 10; i++)
+        {
+            scoreLabels[i - 1] = GameObject.Find(i.ToString() + "_Score").GetComponent<TextMeshProUGUI>();
+            scorerLabels[i - 1] = GameObject.Find(i.ToString() + "User_Label").GetComponent<TextMeshProUGUI>();
+        }
+    }
 	
 	
-	public void refresh()
+	public void refresh(int includeOnline)
 	{
-		Statics.masterMind.downloadHighscores();
-		if(isLocal)
-		{
-			int places=Statics.masterMind.findPlayerInLocal(Statics.masterMind.currentUser);
-			if(places==11)
-			{
-				place.text=">10th";
-			}
-			else
-			{
-				place.text=Statics.intToString(places);
-			}
-		}
-		else
-		{
-			int places=Statics.masterMind.findPlayerInRankings(Statics.masterMind.currentUser);
-			if(places==1001)
-			{
-				place.text=">1000th";
-			}
-			else
-			{
-				place.text=Statics.intToString(places);
-			}
-		}
-	}
+        if (includeOnline == 1)
+        {
+            Statics.masterMind.downloadHighscores();
+        }
+        for (int i = 0; i < scoreLabels.Length; i++)
+        {
+            if (isLocal)
+            {
+                if (Statics.masterMind.HighScores.Length > i && Statics.masterMind.HighScorers.Length > i)
+                {
+                    scoreLabels[i].text = ((float)(Mathf.FloorToInt(Statics.masterMind.HighScores[i] * 10)) / 10.0f).ToString();
+                    scorerLabels[i].text = Statics.masterMind.HighScorers[i];
+                }
+                else
+                {
+                    scoreLabels[i].text = "-";
+                    scorerLabels[i].text = "-----";
+                }
+
+            }
+            else if(includeOnline==1)
+            {
+                if (Statics.masterMind.scoreList.Length > i)
+                {
+                    scoreLabels[i].text = ((float)(Mathf.FloorToInt(Statics.masterMind.scoreList[i].score * 10)) / 10.0f).ToString();
+                    scorerLabels[i].text = Statics.masterMind.scoreList[i].username;
+                }
+                else
+                {
+                    scoreLabels[i].text = "-";
+                    scorerLabels[i].text = "-----";
+                }
+            }
+        }
+        if (isLocal)
+        {
+            int places = Statics.masterMind.findPlayerInLocal(Statics.masterMind.currentUser);
+            if (places == 11)
+            {
+                place.text = ">10th";
+            }
+            else
+            {
+                place.text = Statics.intToString(places);
+            }
+        }
+        else
+        {
+            int places = Statics.masterMind.findPlayerInRankings(Statics.masterMind.currentUser);
+            if (places == 1001)
+            {
+                place.text = ">1000th";
+            }
+            else
+            {
+                place.text = Statics.intToString(places);
+            }
+        }
+    }
 	
 	public void switchLists()
 	{
@@ -93,19 +99,7 @@ public class LoadScoresScript : MonoBehaviour {
 		{
 			ButtonLabel.text="Local";
 		}
-		for(int i=0;i<scoreLabels.Length;i++)
-		{
-			if(isLocal)
-			{
-				scoreLabels[i].text=((float)(Mathf.FloorToInt(Statics.masterMind.HighScores[i]*10))/10.0f).ToString();
-				scorerLabels[i].text=Statics.masterMind.HighScorers[i];
-			}
-			else
-			{
-				scoreLabels[i].text=((float)(Mathf.FloorToInt(Statics.masterMind.scoreList[i].score*10))/10.0f).ToString();
-				scorerLabels[i].text=Statics.masterMind.scoreList[i].username;
-			}
-		}
+        refresh(1);
 	}
 	/*public TextMeshProUGUI first;
 	public TextMeshProUGUI second;
@@ -148,37 +142,6 @@ public class LoadScoresScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		for(int i=0;i<scoreLabels.Length;i++)
-		{
-			if(!isLocal)
-			{
-				scoreLabels[i].text=((float)(Mathf.FloorToInt(Statics.masterMind.scoreList[i].score*10))/10.0f).ToString();
-				scorerLabels[i].text=Statics.masterMind.scoreList[i].username;
-			}
-		}
-		if(isLocal)
-		{
-			int places=Statics.masterMind.findPlayerInLocal(Statics.masterMind.currentUser);
-			if(places==11)
-			{
-				place.text=">10th";
-			}
-			else
-			{
-				place.text=Statics.intToString(places);
-			}
-		}
-		else
-		{
-			int places=Statics.masterMind.findPlayerInRankings(Statics.masterMind.currentUser);
-			if(places==1001)
-			{
-				place.text=">1000th";
-			}
-			else
-			{
-				place.text=Statics.intToString(places);
-			}
-		}
+        refresh(0);
 	}
 }

@@ -9,7 +9,7 @@ public class RecentScoreScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Update () {
-		score.text=Statics.masterMind.score.ToString();
+		score.text="<"+Statics.masterMind.score.ToString()+">";
 	}
 
 }

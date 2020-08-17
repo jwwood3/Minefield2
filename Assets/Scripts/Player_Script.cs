@@ -11,6 +11,7 @@ public class Player_Script : MonoBehaviour {
 	public Rigidbody2D rb;
 	public GameObject PlayingStuff;
 	public GameObject GameOverStuff;
+    public DungeonMaster dm;
 	
 	// Use this for initialization
 	void Start () {
@@ -104,7 +105,7 @@ public class Player_Script : MonoBehaviour {
 		}
 	}
 	
-	void OnCollisionEnter2D (Collision2D coll)
+	/*void OnCollisionEnter2D (Collision2D coll)
     {
 		Debug.Log("Contact");
         if(coll.gameObject.tag=="Enemy")
@@ -112,7 +113,7 @@ public class Player_Script : MonoBehaviour {
 			coll.gameObject.tag="Winner";
             lose();
         }
-    }
+    }*/
 	
 	void OnTriggerEnter2D (Collider2D other)
 	{
@@ -132,6 +133,11 @@ public class Player_Script : MonoBehaviour {
 			Statics.masterMind.powerUpCountdown=20;
 			Destroy(other.gameObject);
 		}
+        else if (other.gameObject.tag == "Point")
+        {
+            dm.scorePoints(Statics.masterMind.pointValue);
+            Destroy(other.gameObject);
+        }
 	}
 	
 	void lose()//when you lose... WIP

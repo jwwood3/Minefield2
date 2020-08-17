@@ -18,7 +18,7 @@ public class StartGame_Script : MonoBehaviour {
 		Statics.masterMind.gameState=1;
 		Statics.masterMind.hasPowerUp=false;
 		Statics.masterMind.powerUpCountdown=20;
-		SceneManager.LoadScene("Main");
+		SceneManager.LoadScene("MainGame");
 	}
 	
 	public void setPlayer()
@@ -86,6 +86,7 @@ public class StartGame_Script : MonoBehaviour {
 		Statics.masterMind.gameState=1;
 		Statics.masterMind.hasPowerUp=false;
 		Statics.masterMind.powerUpCountdown=20;
+        Statics.masterMind.pointCountdown = 5;
 		
 	}
 	

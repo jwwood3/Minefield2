@@ -10,6 +10,7 @@ public class Statics : MonoBehaviour {
     public int x = 60;
     public readonly float[,] cameraCorners = { {-15,15}, {15,-15} };//Coords of topLeft and bottomRight corners of FOV for destroying offScreen objects.
 	public int phase = 1;
+    public int game = 1;
 	public int gameState =1;//0:menu 1:playing 2:gameOver
 	public float[] HighScores = {0,0,0,0,0,0,0,0,0,0};
 	public string[] HighScorers = {"","","","","","","","","",""};
@@ -17,11 +18,14 @@ public class Statics : MonoBehaviour {
 	public bool hasLoadedYet=false;
 	public string currentUser="Player 1";
 	public bool hasPowerUp=false;
-	public float powerUpCountdown=20;
+	public float powerUpCountdown=20.0f;
+    public float pointCountdown = 5.0f;
 	public static Statics masterMind;
-	
-	private static string privateCode = "rpaLRm9P2EeofK6JUvQ-rgQ63V6iiKykikYObEOIX4Hw";
-	private static string publicCode = "5b6276a0191a8b0bcc79a08e";
+    public int pointValue = 20;
+
+    //http://dreamlo.com/lb/XyD8-wun_EyBXa0yIHZYcQaBBghpoZN0-W26oPg9ShQA
+    private static string privateCode = "XyD8-wun_EyBXa0yIHZYcQaBBghpoZN0-W26oPg9ShQA";
+	private static string publicCode = "5f3a6ad8eb371809c4d39cf1";
 	private static string webURL = "http://dreamlo.com/lb/";
 	public Highscore[] scoreList;
 	
@@ -47,10 +51,9 @@ public class Statics : MonoBehaviour {
 		
 	}
 	
-	public void AddNewHighScore(string username, float scorel)//adds highscore to online database
+	public void AddNewHighScore(string username, int scorel)//adds highscore to online database
 	{
-		int adjustedScore = Mathf.FloorToInt(scorel*1000);
-		this.StartCoroutine(UploadNewHighscore(username,adjustedScore));
+		this.StartCoroutine(UploadNewHighscore(username,scorel));
 	}
 	
 	IEnumerator UploadNewHighscore(string username, int scored)//uploads a score to the online database (called by AddNewHighScore function)
@@ -80,7 +83,7 @@ public class Statics : MonoBehaviour {
 		{
 			string[] entryinfo = entries[i].Split(new char[] {'|'});
 			string username = entryinfo[0];
-			float score = ((float)int.Parse(entryinfo[1]))/1000;
+			float score = ((float)int.Parse(entryinfo[1]));
 			scoreList[i]=new Highscore(username,score);
 			print(scoreList[i].username+":"+scoreList[i].score);
 		}
