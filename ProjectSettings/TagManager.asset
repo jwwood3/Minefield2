@@ -9,6 +9,7 @@ TagManager:
   - PowerUp
   - Point
   - Winner
+  - Marker
   layers:
   - Default
   - TransparentFX
@@ -45,6 +46,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Base
+    uniqueID: 1781794133
     locked: 0
   - name: Player
     uniqueID: 2061887339

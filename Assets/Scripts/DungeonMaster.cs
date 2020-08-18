@@ -20,6 +20,7 @@ public class DungeonMaster : MonoBehaviour {
 	public GameObject Player;
 	public GameObject PowerUp;
     public GameObject PointPiece;
+    public GameObject SpawnMarker;
 	// Use this for initialization
 	void Start () {
 		timer  = 0.0f;
@@ -46,6 +47,18 @@ public class DungeonMaster : MonoBehaviour {
     public void scorePoints(int points)
     {
         curScore += points;
+    }
+
+    public void resetSpawnMarkers()
+    {
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Marker"))
+        {
+            Destroy(go);
+        }
+        for(int i = 0; i < Statics.masterMind.phase; i++)
+        {
+            Instantiate(SpawnMarker, new Vector3(Statics.masterMind.spawnPoints[i,0], Statics.masterMind.spawnPoints[i,1], 0.0f), Quaternion.identity);
+        }
     }
 	
 	// Update is called once per frame
@@ -87,7 +100,9 @@ public class DungeonMaster : MonoBehaviour {
 		}
 		else//if you're still playing
 		{
-			//display score
+            //display score
+
+            resetSpawnMarkers();
 			
 			timer+=Time.fixedDeltaTime;
             if (timer > 1)

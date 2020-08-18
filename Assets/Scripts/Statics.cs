@@ -27,8 +27,8 @@ public class Statics : MonoBehaviour {
     public int pointValue = 5;
 
     //http://dreamlo.com/lb/XyD8-wun_EyBXa0yIHZYcQaBBghpoZN0-W26oPg9ShQA
-    private static string privateCode = "XyD8-wun_EyBXa0yIHZYcQaBBghpoZN0-W26oPg9ShQA";
-	private static string publicCode = "5f3a6ad8eb371809c4d39cf1";
+    private static string privateCode = "FJcB7d7fZUK_o86S-DCB2wz9oTLNP0BUGzj9Bxk-80GA";
+	private static string publicCode = "5f3b70bdeb371809c4d63863";
 	private static string webURL = "http://dreamlo.com/lb/";
 	public Highscore[] scoreList;
 	
