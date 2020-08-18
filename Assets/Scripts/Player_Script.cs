@@ -105,19 +105,36 @@ public class Player_Script : MonoBehaviour {
 		}
 	}
 	
-	/*void OnCollisionEnter2D (Collision2D coll)
+	void OnCollisionEnter2D (Collision2D coll)
     {
-		Debug.Log("Contact");
-        if(coll.gameObject.tag=="Enemy")
+		Debug.Log("Contact " + coll.gameObject.GetInstanceID() + " (" + coll.gameObject.transform.position.x + ", " + coll.gameObject.transform.position.y + ") - (" + this.gameObject.transform.position.x + ", " + this.gameObject.transform.position.y+")");
+
+        if (coll.gameObject.tag=="Enemy")
         {
 			coll.gameObject.tag="Winner";
             lose();
         }
-    }*/
+        else if (coll.gameObject.tag == "PowerUp")
+        {
+            foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                Destroy(obj);
+            }
+            Statics.masterMind.hasPowerUp = false;
+            Statics.masterMind.powerUpCountdown = 20;
+            dm.resetPhase();
+            Destroy(coll.gameObject);
+        }
+        else if (coll.gameObject.tag == "Point")
+        {
+            dm.scorePoints(Statics.masterMind.pointValue);
+            Destroy(coll.gameObject);
+        }
+    }
 	
-	void OnTriggerEnter2D (Collider2D other)
+	/*void OnTriggerEnter2D (Collider2D other)
 	{
-		Debug.Log("hContact");
+		Debug.Log("hContact (" + other.gameObject.transform.position.x + ", " + other.gameObject.transform.position.y + ") - (" + this.gameObject.transform.position.x + ", " + this.gameObject.transform.position.y+")");
 		if(other.gameObject.tag=="Enemy")
         {
 			other.gameObject.tag="Winner";
@@ -139,7 +156,7 @@ public class Player_Script : MonoBehaviour {
             dm.scorePoints(Statics.masterMind.pointValue);
             Destroy(other.gameObject);
         }
-	}
+	}*/
 	
 	void lose()//when you lose... WIP
 	{
@@ -147,7 +164,15 @@ public class Player_Script : MonoBehaviour {
 		{
 			Destroy(obj);
 		}
-		GameOverStuff.SetActive(true);
+        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Point"))
+        {
+            Destroy(obj);
+        }
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("PowerUp"))
+        {
+            Destroy(obj);
+        }
+        GameOverStuff.SetActive(true);
 		PlayingStuff.SetActive(false);
 		Statics.masterMind.gameState = 2;
 		Statics.masterMind.x=Statics.masterMind.startX;

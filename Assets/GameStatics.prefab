@@ -46,8 +46,8 @@ MonoBehaviour:
   minX: 20
   startX: 20
   x: 20
-  phase: 4
-  minPhase: 4
+  phase: 1
+  minPhase: 1
   game: 1
   gameState: 1
   HighScores:
@@ -78,4 +78,4 @@ MonoBehaviour:
   hasPowerUp: 0
   powerUpCountdown: 20
   pointCountdown: 5
-  pointValue: 20
+  pointValue: 5

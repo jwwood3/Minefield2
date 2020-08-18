@@ -139,7 +139,7 @@ public class DungeonMaster : MonoBehaviour {
 			{
 				for(int n=0;n<Statics.masterMind.phase;n++)// 4 balls at start, 5 after checkpoint 1, etc.
 				{
-					Instantiate(Enemy);// spawn ball
+					Instantiate(Enemy, new Vector3(0.0f, 12.0f, 0.0f), Quaternion.identity);// spawn ball
 				}
 				timer3-=interval;
 			}
@@ -150,7 +150,11 @@ public class DungeonMaster : MonoBehaviour {
                 Statics.masterMind.game++;
                 Statics.masterMind.minX += 5;
                 Statics.masterMind.x = Statics.masterMind.minX;
-                Statics.masterMind.phase = Statics.masterMind.minPhase;
+                Statics.masterMind.phase --;
+                if (Statics.masterMind.phase < 1)
+                {
+                    Statics.masterMind.phase = 1;
+                }
             }
 
 
