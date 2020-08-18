@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class Statics : MonoBehaviour {
-    public readonly float[,] spawnPoints = { { 0.0f, 4.5f }, { 2.67f, 4.5f }, { -2.67f, 4.5f }, { 5.34f, 4.5f }, { -5.34f, 4.5f }, { 8.0f, 4.5f }, { -8.0f, 4.5f } };//Array of spawn Points
+    public readonly float[,] spawnPoints = { { 0.0f, 4.5f }, { 1.25f, 4.5f }, { -1.25f, 4.5f }, { 2.5f, 4.5f }, { -2.5f, 4.5f }};//Array of spawn Points
     public int minX = 20;
     public int startX = 20;
     public int x = 20;

@@ -21,7 +21,7 @@ public class Enemy_Script : MonoBehaviour {
 		//Set aim toward the player
 		spawnPos = this.transform.position;// stores the spawn position for later use
 		Player = GameObject.Find("Player_Sprite");// locates the player
-		target = new Vector3(Random.Range(-8.0f,8.0f),Player.transform.position.y,0);// find the player's current position
+		target = new Vector3((float)((Random.value * 5) - 2.5),Player.transform.position.y,0);// find the player's current position
 		//target = Statics.unitVectorize(target);//Normalize the vector
 		newPos = new Vector3(((this.transform.position.x-target.x)),((this.transform.position.y-target.y)),0);
 		newPos = Statics.unitVectorize(newPos);

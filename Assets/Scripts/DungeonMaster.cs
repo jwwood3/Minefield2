@@ -107,9 +107,9 @@ public class DungeonMaster : MonoBehaviour {
 			if(phaseCounter>=Statics.masterMind.startX)//WIP - resets x when the phase increases
 			{
 				Statics.masterMind.phase++;
-				if(Statics.masterMind.phase>7)
+				if(Statics.masterMind.phase>5)
 				{
-					Statics.masterMind.phase=7;
+					Statics.masterMind.phase=5;
 				}
                 Statics.masterMind.x = Statics.masterMind.minX;
                 phaseCounter -= Statics.masterMind.startX;
@@ -122,14 +122,14 @@ public class DungeonMaster : MonoBehaviour {
                 if (Statics.masterMind.powerUpCountdown <= 0)
                 {
                     Statics.masterMind.hasPowerUp = true;
-                    Instantiate(PowerUp);
+                    Instantiate(PowerUp, new Vector3(0.0f, 12.0f, 0.0f), Quaternion.identity);
                 }
             }
 
             Statics.masterMind.pointCountdown -= Time.fixedDeltaTime;
             if (Statics.masterMind.pointCountdown <= 0)
             {
-                Instantiate(PointPiece);
+                Instantiate(PointPiece, new Vector3(0.0f, 12.0f, 0.0f), Quaternion.identity);
                 Statics.masterMind.pointCountdown = 5.0f;
             }
 

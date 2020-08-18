@@ -46,12 +46,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 1167228107
+  - name: Player
+    uniqueID: 2061887339
     locked: 0
   - name: Items
     uniqueID: 2897458729
     locked: 0
-  - name: Player
-    uniqueID: 2061887339
+  - name: UI
+    uniqueID: 1167228107
     locked: 0
