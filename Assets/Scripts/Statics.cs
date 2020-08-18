@@ -11,8 +11,8 @@ public class Statics : MonoBehaviour {
     public int startX = 20;
     public int x = 20;
     public readonly float[,] cameraCorners = { {-15,15}, {15,-15} };//Coords of topLeft and bottomRight corners of FOV for destroying offScreen objects.
-	public int phase = 4;
-    public int minPhase = 4;
+	public int phase = 1;
+    public int minPhase = 1;
     public int game = 1;
 	public int gameState =1;//0:menu 1:playing 2:gameOver
 	public float[] HighScores = {0,0,0,0,0,0,0,0,0,0};
@@ -24,7 +24,7 @@ public class Statics : MonoBehaviour {
 	public float powerUpCountdown=20.0f;
     public float pointCountdown = 5.0f;
 	public static Statics masterMind;
-    public int pointValue = 20;
+    public int pointValue = 5;
 
     //http://dreamlo.com/lb/XyD8-wun_EyBXa0yIHZYcQaBBghpoZN0-W26oPg9ShQA
     private static string privateCode = "XyD8-wun_EyBXa0yIHZYcQaBBghpoZN0-W26oPg9ShQA";
