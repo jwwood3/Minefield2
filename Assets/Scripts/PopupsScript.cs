@@ -12,7 +12,7 @@ public class PopupsScript : MonoBehaviour {
     Collider2D c2D;
 	// Use this for initialization
 	void Start () {
-		float x = (float)((Random.value*5)-2.5);
+		float x = (float)((Random.value*4.3)-2.15);
 		float y= (float)((Random.value*6)-5);
         c2D = this.gameObject.GetComponent<Collider2D>();
         sr = this.gameObject.GetComponent<SpriteRenderer>();
