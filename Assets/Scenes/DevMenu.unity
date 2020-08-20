@@ -355,8 +355,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setPointFactor
         m_Mode: 0
         m_Arguments:
@@ -676,8 +676,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setItemBuffer
         m_Mode: 0
         m_Arguments:
@@ -1693,8 +1693,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setStartX
         m_Mode: 0
         m_Arguments:
@@ -2461,8 +2461,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setSpawnFactor
         m_Mode: 0
         m_Arguments:
@@ -3811,8 +3811,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setPhaseLength
         m_Mode: 0
         m_Arguments:
@@ -4699,8 +4699,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setMinPoints
         m_Mode: 0
         m_Arguments:
@@ -4885,8 +4885,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setPowerUpDuration
         m_Mode: 0
         m_Arguments:
@@ -5767,8 +5767,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setDefPC
         m_Mode: 0
         m_Arguments:
@@ -6348,8 +6348,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setSpawnChance
         m_Mode: 0
         m_Arguments:
@@ -6534,8 +6534,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setMinPhase
         m_Mode: 0
         m_Arguments:
@@ -6720,8 +6720,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setPointDuration
         m_Mode: 0
         m_Arguments:
@@ -7337,8 +7337,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: fillTextBoxes
         m_Mode: 1
         m_Arguments:
@@ -7631,18 +7631,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be297af096cdff4eb4827320b65edd3, type: 3}
---- !u!114 &1686429063 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2552278974704337807, guid: 0be297af096cdff4eb4827320b65edd3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1686429062}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2535a750bab8742894f796fb04233e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1697624368
 GameObject:
   m_ObjectHideFlags: 0
@@ -8013,8 +8001,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setMinXInc
         m_Mode: 0
         m_Arguments:
@@ -9782,8 +9770,8 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1686429063}
-        m_TargetAssemblyTypeName: Statics, Assembly-CSharp
+      - m_Target: {fileID: 752760355}
+        m_TargetAssemblyTypeName: StartGame_Script, Assembly-CSharp
         m_MethodName: setDefPUC
         m_Mode: 0
         m_Arguments:

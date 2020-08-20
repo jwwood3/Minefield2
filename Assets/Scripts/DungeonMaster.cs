@@ -30,8 +30,8 @@ public class DungeonMaster : MonoBehaviour {
 		//timer3 = 0.0f;
         phaseCounter = 0.0f;
         curScore  = 0;
-        Statics.masterMind.pointCountdown = 5.0f;
-        Statics.masterMind.powerUpCountdown = 20.0f;
+        Statics.masterMind.pointCountdown = Statics.masterMind.defPC;
+        Statics.masterMind.powerUpCountdown = Statics.masterMind.defPUC;
         resetSpawnMarkers();
     }
 
@@ -41,8 +41,8 @@ public class DungeonMaster : MonoBehaviour {
         timer2 = 0.0f;
         //timer3 = 0.0f;
         phaseCounter = 0.0f;
-        Statics.masterMind.pointCountdown = 5.0f;
-        Statics.masterMind.powerUpCountdown = 20.0f;
+        Statics.masterMind.pointCountdown = Statics.masterMind.defPC;
+        Statics.masterMind.powerUpCountdown = Statics.masterMind.defPUC;
         Statics.masterMind.x = Statics.masterMind.minX;
     }
 

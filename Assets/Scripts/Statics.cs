@@ -74,25 +74,27 @@ public class Statics : MonoBehaviour {
 
     public void fillTextBoxes()
     {
+        print("FunctionRunning");
         if (!(GameObject.Find("DevMenuTitle") is null))
         {
-            GameObject.Find("itemBufferField/Placeholder").GetComponent<TextMeshProUGUI>().text = itemBuffer.ToString();
-            GameObject.Find("minPhaseField/Placeholder").GetComponent<TextMeshProUGUI>().text = minPhase.ToString();
-            GameObject.Find("phaseLengthField/Placeholder").GetComponent<TextMeshProUGUI>().text = phaseLength.ToString();
-            GameObject.Find("pointDurationField/Placeholder").GetComponent<TextMeshProUGUI>().text = pointDuration.ToString();
-            GameObject.Find("powerUpDurationField/Placeholder").GetComponent<TextMeshProUGUI>().text = powerUpDuration.ToString();
-            GameObject.Find("minPointsField/Placeholder").GetComponent<TextMeshProUGUI>().text = pointValue.ToString();
-            GameObject.Find("pointFactorField/Placeholder").GetComponent<TextMeshProUGUI>().text = pointFactor.ToString();
-            GameObject.Find("spawnFactorField/Placeholder").GetComponent<TextMeshProUGUI>().text = spawnFactor.ToString();
-            GameObject.Find("baseSpawnField/Placeholder").GetComponent<TextMeshProUGUI>().text = spawnChance.ToString();
-            GameObject.Find("startXField/Placeholder").GetComponent<TextMeshProUGUI>().text = startX.ToString();
-            GameObject.Find("minXIncField/Placeholder").GetComponent<TextMeshProUGUI>().text = minXInc.ToString();
-            GameObject.Find("defPUCField/Placeholder").GetComponent<TextMeshProUGUI>().text = defPUC.ToString();
-            GameObject.Find("defPCField/Placeholder").GetComponent<TextMeshProUGUI>().text = defPC.ToString();
+            print("ActuallyDoingStuff");
+            GameObject.Find("itemBufferField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = itemBuffer.ToString();
+            GameObject.Find("minPhaseField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = minPhase.ToString();
+            GameObject.Find("phaseLengthField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = phaseLength.ToString();
+            GameObject.Find("pointDurationField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = pointDuration.ToString();
+            GameObject.Find("powerUpDurationField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = powerUpDuration.ToString();
+            GameObject.Find("minPointsField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = pointValue.ToString();
+            GameObject.Find("pointFactorField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = pointFactor.ToString();
+            GameObject.Find("spawnFactorField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = spawnFactor.ToString();
+            GameObject.Find("baseSpawnField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = spawnChance.ToString();
+            GameObject.Find("startXField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = startX.ToString();
+            GameObject.Find("minXIncField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = minXInc.ToString();
+            GameObject.Find("defPUCField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = defPUC.ToString();
+            GameObject.Find("defPCField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = defPC.ToString();
         }
     }
 
-    void resetStaticStuff()
+    public void resetStaticStuff()
     {
         this.powerUpCountdown = this.defPUC;
         this.pointCountdown = this.defPC;
@@ -101,83 +103,7 @@ public class Statics : MonoBehaviour {
         this.phase = this.minPhase;
     }
 
-    public void setItemBuffer(string newBuffer)
-    {
-        itemBuffer = float.Parse(newBuffer);
-        resetStaticStuff();
-    }
-
-    public void setMinPhase(string newMinPhase)
-    {
-        minPhase = int.Parse(newMinPhase);
-        resetStaticStuff();
-    }
-
-    public void setPhaseLength(string newPhaseLength)
-    {
-        phaseLength = float.Parse(newPhaseLength);
-        resetStaticStuff();
-    }
-
-    public void setPointDuration(string newPointDuration)
-    {
-        pointDuration = float.Parse(newPointDuration);
-        resetStaticStuff();
-    }
-
-    public void setPowerUpDuration(string newPowerUpDuration)
-    {
-        powerUpDuration = float.Parse(newPowerUpDuration);
-        resetStaticStuff();
-    }
-
-    public void setMinPoints(string newMinPoints)
-    {
-        pointValue = int.Parse(newMinPoints);
-        resetStaticStuff();
-    }
-
-    public void setPointFactor(string newPointFactor)
-    {
-        pointFactor = float.Parse(newPointFactor);
-        resetStaticStuff();
-    }
-
-    public void setSpawnFactor(string newSpawnFactor)
-    {
-        spawnFactor = float.Parse(newSpawnFactor);
-        resetStaticStuff();
-    }
-
-    public void setSpawnChance(string newSpawnChance)
-    {
-        spawnChance = int.Parse(newSpawnChance);
-        resetStaticStuff();
-    }
-
-    public void setStartX(string newStartX)
-    {
-        startX = int.Parse(newStartX);
-        resetStaticStuff();
-    }
-
-    public void setMinXInc(string newMinXInc)
-    {
-        minXInc = int.Parse(newMinXInc);
-        resetStaticStuff();
-    }
-
-    public void setDefPUC(string newDefPUC)
-    {
-        defPUC = float.Parse(newDefPUC);
-        resetStaticStuff();
-    }
-
-    public void setDefPC(string newDefPC)
-    {
-        defPC = float.Parse(newDefPC);
-        resetStaticStuff();
-    }
+    
 
     public void AddNewHighScore(string username, int scorel)//adds highscore to online database
 	{
