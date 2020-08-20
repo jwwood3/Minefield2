@@ -2,31 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Script : MonoBehaviour {
+public class Player_Script : MonoBehaviour
+{
     public float speed;
-	public Camera cam;
+    public Camera cam;
     public Vector3 target;
-	private Vector3 touchTarget;
-	public float deltaX, deltaY;
-	public Rigidbody2D rb;
-	public GameObject PlayingStuff;
-	public GameObject GameOverStuff;
+    private Vector3 touchTarget;
+    public float deltaX, deltaY;
+    public Rigidbody2D rb;
+    public GameObject PlayingStuff;
+    public GameObject GameOverStuff;
     public DungeonMaster dm;
-	
-	// Use this for initialization
-	void Start () {
-		speed = 3f;
-		target = this.transform.position;
-		rb = GetComponent<Rigidbody2D> ();
-		#if UNITY_STANDALONE
+
+    // Use this for initialization
+    void Start()
+    {
+        speed = 3f;
+        target = this.transform.position;
+        rb = GetComponent<Rigidbody2D>();
+#if UNITY_STANDALONE
 		Cursor.visible=false;
-		#endif
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-		/*if(Input.touches.Length>0 && Input.touches[0].phase!=TouchPhase.Ended && Input.touches[0].phase!=TouchPhase.Canceled){
+#endif
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        /*if(Input.touches.Length>0 && Input.touches[0].phase!=TouchPhase.Ended && Input.touches[0].phase!=TouchPhase.Canceled){
 			touchTarget.x = Input.touches[0].position.x;
 			touchTarget.y = Input.touches[0].position.y;
 		}
@@ -52,9 +55,9 @@ public class Player_Script : MonoBehaviour {
 		{
 			this.transform.position=target;
 		}*/
-		if(Statics.masterMind.gameState!=2)
-		{
-			#if UNITY_ANDROID
+        if (Statics.masterMind.gameState != 2)
+        {
+#if UNITY_ANDROID
 				if (Input.touchCount > 0) {
 				
 
@@ -91,27 +94,27 @@ public class Player_Script : MonoBehaviour {
 						print("Slow");
 					}
 				}
-			#endif
-			
-			#if UNITY_STANDALONE
+#endif
+
+#if UNITY_STANDALONE
 				Vector3 screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 				Vector3 cursorPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 				Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint);
 				transform.position = cursorPosition;
-			#endif
-		}
-		else
-		{
-		}
-	}
-	
-	void OnCollisionEnter2D (Collision2D coll)
-    {
-		Debug.Log("Contact " + coll.gameObject.GetInstanceID() + " (" + coll.gameObject.transform.position.x + ", " + coll.gameObject.transform.position.y + ") - (" + this.gameObject.transform.position.x + ", " + this.gameObject.transform.position.y+")");
-
-        if (coll.gameObject.tag=="Enemy")
+#endif
+        }
+        else
         {
-			coll.gameObject.tag="Winner";
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        Debug.Log("Contact " + coll.gameObject.GetInstanceID() + " (" + coll.gameObject.transform.position.x + ", " + coll.gameObject.transform.position.y + ") - (" + this.gameObject.transform.position.x + ", " + this.gameObject.transform.position.y + ")");
+
+        if (coll.gameObject.tag == "Enemy")
+        {
+            coll.gameObject.tag = "Winner";
             lose();
         }
         else if (coll.gameObject.tag == "PowerUp")
@@ -120,8 +123,6 @@ public class Player_Script : MonoBehaviour {
             {
                 Destroy(obj);
             }
-            Statics.masterMind.hasPowerUp = false;
-            Statics.masterMind.powerUpCountdown = 20;
             dm.resetPhase();
             Destroy(coll.gameObject);
         }
@@ -131,8 +132,8 @@ public class Player_Script : MonoBehaviour {
             Destroy(coll.gameObject);
         }
     }
-	
-	/*void OnTriggerEnter2D (Collider2D other)
+
+    /*void OnTriggerEnter2D (Collider2D other)
 	{
 		Debug.Log("hContact (" + other.gameObject.transform.position.x + ", " + other.gameObject.transform.position.y + ") - (" + this.gameObject.transform.position.x + ", " + this.gameObject.transform.position.y+")");
 		if(other.gameObject.tag=="Enemy")
@@ -157,14 +158,14 @@ public class Player_Script : MonoBehaviour {
             Destroy(other.gameObject);
         }
 	}*/
-	
-	void lose()//when you lose... WIP
-	{
-		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
-		{
-			Destroy(obj);
-		}
-        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Point"))
+
+    void lose()//when you lose... WIP
+    {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(obj);
+        }
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Point"))
         {
             Destroy(obj);
         }
@@ -173,17 +174,17 @@ public class Player_Script : MonoBehaviour {
             Destroy(obj);
         }
         GameOverStuff.SetActive(true);
-		PlayingStuff.SetActive(false);
-		Statics.masterMind.gameState = 2;
-		Statics.masterMind.x=Statics.masterMind.startX;
+        PlayingStuff.SetActive(false);
+        Statics.masterMind.gameState = 2;
+        Statics.masterMind.x = Statics.masterMind.startX;
         Statics.masterMind.minX = Statics.masterMind.startX;
-        Statics.masterMind.phase=Statics.masterMind.minPhase;
+        Statics.masterMind.phase = Statics.masterMind.minPhase;
         Statics.masterMind.game = 1;
-		#if UNITY_STANDALONE
+#if UNITY_STANDALONE
 		Cursor.visible=true;
-		#endif
-		
-	}
+#endif
 
-    
+    }
+
+
 }

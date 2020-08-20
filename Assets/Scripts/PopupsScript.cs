@@ -1,25 +1,61 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Statics;
 
-public class PopupsScript : MonoBehaviour {
+public class PopupsScript : MonoBehaviour
+{
 
-    public float life = 3.0f;
-	// Use this for initialization
-	void Start () {
-		float x = (float)((Random.value*17)-8.5);
-		float y= (float)((Random.value*10)-5);
-		this.gameObject.transform.position=new Vector3(x,y,1);
-	}
+    public bool isPoint;
+    float life;
+    float fullLife;
+    float timer;
+    Color trueColor;
+    SpriteRenderer sr;
+    Collider2D c2D;
+    // Use this for initialization
+    void Start()
+    {
+        timer = Statics.masterMind.itemBuffer;
+        if (isPoint)
+        {
+            life = Statics.masterMind.pointDuration;
+        }
+        else
+        {
+            life = Statics.masterMind.powerUpDuration;
+        }
+        float x = (float)((Random.value * 16) - 8);
+        float y = (float)((Random.value * 8) - 4);
+        c2D = this.gameObject.GetComponent<Collider2D>();
+        sr = this.gameObject.GetComponent<SpriteRenderer>();
+        trueColor = sr.color;
+        sr.color = Color.yellow;
+        c2D.enabled = false;
+        this.gameObject.transform.position = new Vector3(x, y, 1);
+        fullLife = life;
+    }
 
     void FixedUpdate()
     {
-        life -= Time.fixedDeltaTime;
-        if (life <= 0)
+        if (timer > 0)
         {
-            Destroy(this.gameObject);
+            timer -= Time.fixedDeltaTime;
+        }
+        else
+        {
+            if (life == fullLife)
+            {
+                c2D.enabled = true;
+                sr.color = trueColor;
+            }
+            life -= Time.fixedDeltaTime;
+            if (life <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
-	
-	
+
+
 }

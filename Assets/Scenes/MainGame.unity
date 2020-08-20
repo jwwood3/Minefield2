@@ -774,7 +774,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.65
+  m_fontSize: 27.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.5
+  m_fontSize: 29.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.6
+  m_fontSize: 42.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1660,7 +1660,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.95
+  m_fontSize: 52.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1809,11 +1809,18 @@ MonoBehaviour:
   Score: {fileID: 1194513279}
   CheckPoint: {fileID: 1399950736}
   HighScore: {fileID: 1988378854}
-  Enemy: {fileID: 1885034404304386, guid: fc22e462f276565408e8769208427632, type: 3}
   Player: {fileID: 1467113023914142, guid: 45b0246cd2053514c9fb305e287f1802, type: 3}
   PowerUp: {fileID: 1833068542844818, guid: 4d08dce61d8470c47b10d17db5795c8a, type: 3}
   PointPiece: {fileID: 6254961872208981297, guid: 184d2ad0f07f4a840bb6107e40d2094b,
     type: 3}
+  SpawnMarker: {fileID: 288942221683382411, guid: 1aea511102e22994ea9480c87d03a037,
+    type: 3}
+  Spawns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1704102745
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,7 +2041,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49
+  m_fontSize: 39.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2567,7 +2574,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.6
+  m_fontSize: 42.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
