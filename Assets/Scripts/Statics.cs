@@ -25,6 +25,7 @@ public class Statics : MonoBehaviour {
     public float pointCountdown = 5.0f;
 	public static Statics masterMind;
     public int pointValue = 5;
+    public int spawnChance = 75;
 
     //http://dreamlo.com/lb/XyD8-wun_EyBXa0yIHZYcQaBBghpoZN0-W26oPg9ShQA
     private static string privateCode = "FJcB7d7fZUK_o86S-DCB2wz9oTLNP0BUGzj9Bxk-80GA";

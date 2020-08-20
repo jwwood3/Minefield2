@@ -6,28 +6,36 @@ public class Enemy_Script : MonoBehaviour {
 	public Vector3 target;
 	public float speed;
 	public GameObject Player;
-	public Vector3 spawnPos;
+	//public Vector3 spawnPos;
 	private Vector3 newPos;
 	private Vector3 tempVector;
 	// Use this for initialization
 	void Start () {
 		speed = 0.5f;
 		//Set Position to a random open spawn Point
-		Vector3 temp = new Vector3(0,0,0);
+		/*Vector3 temp = new Vector3(0,0,0);
 		int temp2 = Random.Range(0,Statics.masterMind.phase);
 		temp.x = Statics.masterMind.spawnPoints[temp2,0];
 		temp.y = Statics.masterMind.spawnPoints[temp2,1];
-		this.transform.position = temp;
+		this.transform.position = temp;*/
 		//Set aim toward the player
-		spawnPos = this.transform.position;// stores the spawn position for later use
+		//spawnPos = this.transform.position;// stores the spawn position for later use
+
+        /*
+         * Note: The stuff above used to pick a random starting position when bullets
+         *       were spawned by DungeonMaster. Now that each spawner has a script,
+         *       this is unnecessary as each spawner will spawn in only one location
+         */
+
+
 		Player = GameObject.Find("Player_Sprite");// locates the player
         //target = new Vector3((float)((Random.value * 5) - 2.5),Player.transform.position.y,0);// Target random spot on the player's x plane
         target = Player.transform.position;// find the player's current position
         //target = Statics.unitVectorize(target);//Normalize the vector
         newPos = new Vector3(((this.transform.position.x-target.x)),((this.transform.position.y-target.y)),0);
 		newPos = Statics.unitVectorize(newPos);
-		newPos.x*=(speed*(Vector3.Distance(target,spawnPos)+0.1f)*Time.deltaTime);
-		newPos.y*=(speed*(Vector3.Distance(target,spawnPos)+0.1f)*Time.deltaTime);
+		newPos.x *= (speed*(Vector3.Distance(target,this.transform.position)+0.1f)*Time.deltaTime);
+		newPos.y *= (speed*(Vector3.Distance(target,this.transform.position)+0.1f)*Time.deltaTime);
 	}
 	
 	// Update is called once per frame
