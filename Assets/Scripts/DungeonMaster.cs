@@ -149,21 +149,18 @@ public class DungeonMaster : MonoBehaviour {
 
             }
 
-            if (!Statics.masterMind.hasPowerUp)
+            Statics.masterMind.powerUpCountdown -= Time.fixedDeltaTime;
+            if (Statics.masterMind.powerUpCountdown <= 0)
             {
-                Statics.masterMind.powerUpCountdown -= Time.fixedDeltaTime;
-                if (Statics.masterMind.powerUpCountdown <= 0)
-                {
-                    Statics.masterMind.hasPowerUp = true;
-                    Instantiate(PowerUp, new Vector3(0.0f, 12.0f, 0.0f), Quaternion.identity);
-                }
+                Instantiate(PowerUp, new Vector3(0.0f, 12.0f, 0.0f), Quaternion.identity);
+                Statics.masterMind.powerUpCountdown += Statics.masterMind.defPUC;
             }
 
             Statics.masterMind.pointCountdown -= Time.fixedDeltaTime;
             if (Statics.masterMind.pointCountdown <= 0)
             {
                 Instantiate(PointPiece, new Vector3(0.0f, 12.0f, 0.0f), Quaternion.identity);
-                Statics.masterMind.pointCountdown = 5.0f;
+                Statics.masterMind.pointCountdown += Statics.masterMind.defPC;
             }
 
             /*//spawn x balls every startx seconds

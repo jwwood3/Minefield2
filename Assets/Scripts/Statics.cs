@@ -20,9 +20,10 @@ public class Statics : MonoBehaviour {
 	public float score;
 	public bool hasLoadedYet=false;
 	public string currentUser="Player 1";
-	public bool hasPowerUp=false;
-	public float powerUpCountdown=20.0f;
-    public float pointCountdown = 5.0f;
+    public float defPUC = 20.0f;
+    public float defPC = 5.0f;
+    public float powerUpCountdown;
+    public float pointCountdown;
 	public static Statics masterMind;
     public int pointValue = 5;
     public int spawnChance = 100;
@@ -52,7 +53,8 @@ public class Statics : MonoBehaviour {
 	{
 		print("scorelength:"+Statics.masterMind.HighScores.Length);
 		print("scorerlength:"+Statics.masterMind.HighScorers.Length);
-		
+        this.powerUpCountdown = this.defPUC;
+        this.pointCountdown = this.defPC;
 	}
 	
 	public void AddNewHighScore(string username, int scorel)//adds highscore to online database

@@ -120,8 +120,6 @@ public class Player_Script : MonoBehaviour {
             {
                 Destroy(obj);
             }
-            Statics.masterMind.hasPowerUp = false;
-            Statics.masterMind.powerUpCountdown = 20;
             dm.resetPhase();
             Destroy(coll.gameObject);
         }

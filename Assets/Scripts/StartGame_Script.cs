@@ -11,14 +11,22 @@ public class StartGame_Script : MonoBehaviour {
 	public TMP_InputField playerName;
 	
 	
-
+    public void resetStuff()
+    {
+        
+		Statics.masterMind.powerUpCountdown=Statics.masterMind.defPUC;
+        Statics.masterMind.pointCountdown = Statics.masterMind.defPC;
+        Statics.masterMind.phase = Statics.masterMind.minPhase;
+        Statics.masterMind.game = 1;
+        Statics.masterMind.x = Statics.masterMind.startX;
+        Statics.masterMind.minX = Statics.masterMind.minX;
+    }
 	
 	public void startGame()
 	{
-		Statics.masterMind.gameState=1;
-		Statics.masterMind.hasPowerUp=false;
-		Statics.masterMind.powerUpCountdown=20;
-		SceneManager.LoadScene("MainGame");
+        resetStuff();
+        Statics.masterMind.gameState = 1;
+        SceneManager.LoadScene("MainGame");
 	}
 	
 	public void setPlayer()
@@ -83,10 +91,8 @@ public class StartGame_Script : MonoBehaviour {
 		Player.transform.position=new Vector3(0,0,0);
 		PlayingStuff.SetActive(true);
 		GameOverStuff.SetActive(false);
-		Statics.masterMind.gameState=1;
-		Statics.masterMind.hasPowerUp=false;
-		Statics.masterMind.powerUpCountdown=20;
-        Statics.masterMind.pointCountdown = 5;
+        Statics.masterMind.gameState = 1;
+        resetStuff();
 		
 	}
 	
