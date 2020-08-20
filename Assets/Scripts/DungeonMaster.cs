@@ -16,28 +16,30 @@ public class DungeonMaster : MonoBehaviour {
 	public TextMeshProUGUI CheckPoint;
 	public TextMeshProUGUI HighScore;
 
-	public GameObject Enemy;
+	//public GameObject Enemy;
 	public GameObject Player;
 	public GameObject PowerUp;
     public GameObject PointPiece;
     public GameObject SpawnMarker;
+
+    public GameObject[] Spawns = {null, null, null, null, null};
 	// Use this for initialization
 	void Start () {
 		timer  = 0.0f;
 		timer2 = 0.0f;
-		timer3 = 0.0f;
+		//timer3 = 0.0f;
         phaseCounter = 0.0f;
         curScore  = 0;
         Statics.masterMind.pointCountdown = 5.0f;
         Statics.masterMind.powerUpCountdown = 20.0f;
-
+        resetSpawnMarkers();
     }
 
     public void resetPhase()
     {
         timer = 0.0f;
         timer2 = 0.0f;
-        timer3 = 0.0f;
+        //timer3 = 0.0f;
         phaseCounter = 0.0f;
         Statics.masterMind.pointCountdown = 5.0f;
         Statics.masterMind.powerUpCountdown = 20.0f;
@@ -51,18 +53,34 @@ public class DungeonMaster : MonoBehaviour {
 
     public void resetSpawnMarkers()
     {
-        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Marker"))
+        for(int i = 0; i < Spawns.Length; i++)
+        {
+            if(Spawns[i] is null && i<Statics.masterMind.phase)
+            {
+                GameObject newSpawn = Instantiate(SpawnMarker, new Vector3(Statics.masterMind.spawnPoints[i, 0], Statics.masterMind.spawnPoints[i, 1], 0.0f), Quaternion.identity);
+                Spawns[i] = newSpawn;
+            }
+            if(!(Spawns[i] is null) && i>=Statics.masterMind.phase)
+            {
+                Destroy(Spawns[i]);
+                Spawns[i] = null;
+            }
+        }
+
+
+        /*foreach (GameObject go in GameObject.FindGameObjectsWithTag("Marker"))
         {
             Destroy(go);
         }
         for(int i = 0; i < Statics.masterMind.phase; i++)
         {
             Instantiate(SpawnMarker, new Vector3(Statics.masterMind.spawnPoints[i,0], Statics.masterMind.spawnPoints[i,1], 0.0f), Quaternion.identity);
-        }
+        }*/
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        resetSpawnMarkers();
 		if(Statics.masterMind.gameState==2)//if you lost // this is set in Player_Script
 		{
 			if(curScore>0)
@@ -93,7 +111,7 @@ public class DungeonMaster : MonoBehaviour {
                 curScore = 0;
 				timer=0.0f;
 				timer2=0.0f;
-				timer3=0.0f;
+				//timer3=0.0f;
                 phaseCounter = 0.0f;
 			}
 			
@@ -111,7 +129,7 @@ public class DungeonMaster : MonoBehaviour {
                 timer = timer-1.0f;
             }
 			timer2+=Time.fixedDeltaTime;
-			timer3+=Time.fixedDeltaTime;
+			//timer3+=Time.fixedDeltaTime;
             phaseCounter += Time.fixedDeltaTime;
 			Score.text=curScore.ToString();
 			HighScore.text=(Mathf.Floor(Statics.masterMind.HighScores[0]*10)/10).ToString();
@@ -148,7 +166,7 @@ public class DungeonMaster : MonoBehaviour {
                 Statics.masterMind.pointCountdown = 5.0f;
             }
 
-            //spawn x balls every startx seconds
+            /*//spawn x balls every startx seconds
             float interval = (((float)Statics.masterMind.startX) / ((float)Statics.masterMind.x));
             if (timer3>interval)
 			{
@@ -157,7 +175,7 @@ public class DungeonMaster : MonoBehaviour {
 					Instantiate(Enemy, new Vector3(0.0f, 12.0f, 0.0f), Quaternion.identity);// spawn ball
 				}
 				timer3-=interval;
-			}
+			}*/
 
             if (curScore - subtractor >= 100)
             {
