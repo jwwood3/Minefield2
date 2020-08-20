@@ -127,6 +127,12 @@ public class StartGame_Script : MonoBehaviour {
         Statics.masterMind.resetStaticStuff();
     }
 
+    public void setEnemySpeed(string newEnemySpeed)
+    {
+        Statics.masterMind.enemySpeed = float.Parse(newEnemySpeed);
+        Statics.masterMind.resetStaticStuff();
+    }
+
     public void menuFromGame()
 	{
 		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Winner"))

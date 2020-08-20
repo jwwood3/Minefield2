@@ -37,6 +37,7 @@ public class Statics : MonoBehaviour {
     public int minXInc = 5;//Increment for minX when level increases
     public float defPUC = 20.0f;//Time in between power up spawns
     public float defPC = 5.0f;//Time in between point spawns
+    public float enemySpeed = 0.5f;//Base speed of enemy bullets
 
 
 
@@ -91,6 +92,7 @@ public class Statics : MonoBehaviour {
             GameObject.Find("minXIncField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = minXInc.ToString();
             GameObject.Find("defPUCField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = defPUC.ToString();
             GameObject.Find("defPCField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = defPC.ToString();
+            GameObject.Find("enemySpeedField/Text Area/Placeholder").GetComponent<TextMeshProUGUI>().text = enemySpeed.ToString();
         }
     }
 
