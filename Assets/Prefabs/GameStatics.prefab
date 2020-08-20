@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4157771288529068}
-  - component: {fileID: 114590611587045786}
+  - component: {fileID: 2552278974704337807}
   m_Layer: 0
   m_Name: GameStatics
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114590611587045786
+--- !u!114 &2552278974704337807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,8 +46,8 @@ MonoBehaviour:
   minX: 20
   startX: 20
   x: 20
-  phase: 1
-  minPhase: 1
+  phase: 2
+  minPhase: 2
   game: 1
   gameState: 1
   HighScores:
@@ -79,3 +79,4 @@ MonoBehaviour:
   powerUpCountdown: 20
   pointCountdown: 5
   pointValue: 5
+  spawnChance: 100

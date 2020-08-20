@@ -6,13 +6,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class Statics : MonoBehaviour {
-    public readonly float[,] spawnPoints = { { 0.0f, 4.5f }, { 1.25f, 4.5f }, { -1.25f, 4.5f }, { 2.5f, 4.5f }, { -2.5f, 4.5f }};//Array of spawn Points
+    public readonly float[,] spawnPoints = { { 1.075f, 4.5f }, { -1.075f, 4.5f }, { 0.0f, 4.5f }, { 2.15f, 4.5f }, { -2.15f, 4.5f }};//Array of spawn Points
     public int minX = 20;
     public int startX = 20;
     public int x = 20;
     public readonly float[,] cameraCorners = { {-15,15}, {15,-15} };//Coords of topLeft and bottomRight corners of FOV for destroying offScreen objects.
-	public int phase = 1;
-    public int minPhase = 1;
+	public int phase = 2;
+    public int minPhase = 2;
     public int game = 1;
 	public int gameState =1;//0:menu 1:playing 2:gameOver
 	public float[] HighScores = {0,0,0,0,0,0,0,0,0,0};
@@ -25,7 +25,7 @@ public class Statics : MonoBehaviour {
     public float pointCountdown = 5.0f;
 	public static Statics masterMind;
     public int pointValue = 5;
-    public int spawnChance = 75;
+    public int spawnChance = 100;
 
     //http://dreamlo.com/lb/XyD8-wun_EyBXa0yIHZYcQaBBghpoZN0-W26oPg9ShQA
     private static string privateCode = "FJcB7d7fZUK_o86S-DCB2wz9oTLNP0BUGzj9Bxk-80GA";

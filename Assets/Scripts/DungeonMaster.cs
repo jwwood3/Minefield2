@@ -48,7 +48,7 @@ public class DungeonMaster : MonoBehaviour {
 
     public void scorePoints(int points)
     {
-        curScore += points;
+        curScore += (int)Mathf.Floor((12.0f*Mathf.Log10((float)Statics.masterMind.game)+(float)points)+0.5f);
     }
 
     public void resetSpawnMarkers()
@@ -133,7 +133,7 @@ public class DungeonMaster : MonoBehaviour {
             phaseCounter += Time.fixedDeltaTime;
 			Score.text=curScore.ToString();
 			HighScore.text=(Mathf.Floor(Statics.masterMind.HighScores[0]*10)/10).ToString();
-			CheckPoint.text=(Statics.masterMind.phase-(Statics.masterMind.minPhase-1)).ToString();
+			CheckPoint.text=Statics.masterMind.game.ToString();
 
             
 
