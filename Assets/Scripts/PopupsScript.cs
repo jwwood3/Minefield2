@@ -6,7 +6,7 @@ public class PopupsScript : MonoBehaviour {
 
     public float life = 3.0f;
     float fullLife;
-    float timer = 0.4f;
+    float timer = 0.2f;
     Color trueColor;
     SpriteRenderer sr;
     Collider2D c2D;
