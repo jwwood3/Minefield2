@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using TMPro;
 
 public class Statics : MonoBehaviour {
     public readonly float[,] spawnPoints = { { 1.075f, 4.5f }, { -1.075f, 4.5f }, { 0.0f, 4.5f }, { 2.15f, 4.5f }, { -2.15f, 4.5f }};//Array of spawn Points
-    public int minX = 20;
-    public int startX = 20;
-    public int x = 20;
+    public int minX;
+    public int x;
     public readonly float[,] cameraCorners = { {-15,15}, {15,-15} };//Coords of topLeft and bottomRight corners of FOV for destroying offScreen objects.
-	public int phase = 2;
-    public int minPhase = 2;
+    public int phase;
     public int game = 1;
 	public int gameState =1;//0:menu 1:playing 2:gameOver
 	public float[] HighScores = {0,0,0,0,0,0,0,0,0,0};
@@ -20,13 +19,27 @@ public class Statics : MonoBehaviour {
 	public float score;
 	public bool hasLoadedYet=false;
 	public string currentUser="Player 1";
-    public float defPUC = 20.0f;
-    public float defPC = 5.0f;
     public float powerUpCountdown;
     public float pointCountdown;
 	public static Statics masterMind;
-    public int pointValue = 5;
-    public int spawnChance = 100;
+
+    //DevFlags
+    public float itemBuffer = 0.2f;//How long after item spawn can items be picked up
+    public int minPhase = 2;//Number of spawns at the beginning of the game
+    public float phaseLength = 30.0f;//How long before another spawner appears and spawn rate resets
+    public float pointDuration = 2.5f;//How long point pickups remain on the screen before despawning
+    public float powerUpDuration = 1.5f;//"  "   power up   "     "    "  "     "      "        "
+    public int pointValue = 5;//Starting point value of point pickups
+    public float pointFactor = 12.0f;//multiplier in logarithmic equation for point value growth as level increases
+    public float spawnFactor = 8.0f;//multiplier in equation for spawn chance as phase increases
+    public int spawnChance = 100;//Base spawn chance in phase 1 at the beginning of the phase
+    public int startX = 20;//Starting value for minX and x, x balls spawn every startX seconds, so higher means spawn rate increases more slowly and vice versa
+    public int minXInc = 5;//Increment for minX when level increases
+    public float defPUC = 20.0f;//Time in between power up spawns
+    public float defPC = 5.0f;//Time in between point spawns
+
+
+
 
     //http://dreamlo.com/lb/XyD8-wun_EyBXa0yIHZYcQaBBghpoZN0-W26oPg9ShQA
     private static string privateCode = "FJcB7d7fZUK_o86S-DCB2wz9oTLNP0BUGzj9Bxk-80GA";
@@ -51,13 +64,122 @@ public class Statics : MonoBehaviour {
 	
 	void Start()
 	{
+        resetStaticStuff();
+        fillTextBoxes();
 		print("scorelength:"+Statics.masterMind.HighScores.Length);
 		print("scorerlength:"+Statics.masterMind.HighScorers.Length);
+        
+
+	}
+
+    public void fillTextBoxes()
+    {
+        if (!(GameObject.Find("DevMenuTitle") is null))
+        {
+            GameObject.Find("itemBufferField/Placeholder").GetComponent<TextMeshProUGUI>().text = itemBuffer.ToString();
+            GameObject.Find("minPhaseField/Placeholder").GetComponent<TextMeshProUGUI>().text = minPhase.ToString();
+            GameObject.Find("phaseLengthField/Placeholder").GetComponent<TextMeshProUGUI>().text = phaseLength.ToString();
+            GameObject.Find("pointDurationField/Placeholder").GetComponent<TextMeshProUGUI>().text = pointDuration.ToString();
+            GameObject.Find("powerUpDurationField/Placeholder").GetComponent<TextMeshProUGUI>().text = powerUpDuration.ToString();
+            GameObject.Find("minPointsField/Placeholder").GetComponent<TextMeshProUGUI>().text = pointValue.ToString();
+            GameObject.Find("pointFactorField/Placeholder").GetComponent<TextMeshProUGUI>().text = pointFactor.ToString();
+            GameObject.Find("spawnFactorField/Placeholder").GetComponent<TextMeshProUGUI>().text = spawnFactor.ToString();
+            GameObject.Find("baseSpawnField/Placeholder").GetComponent<TextMeshProUGUI>().text = spawnChance.ToString();
+            GameObject.Find("startXField/Placeholder").GetComponent<TextMeshProUGUI>().text = startX.ToString();
+            GameObject.Find("minXIncField/Placeholder").GetComponent<TextMeshProUGUI>().text = minXInc.ToString();
+            GameObject.Find("defPUCField/Placeholder").GetComponent<TextMeshProUGUI>().text = defPUC.ToString();
+            GameObject.Find("defPCField/Placeholder").GetComponent<TextMeshProUGUI>().text = defPC.ToString();
+        }
+    }
+
+    void resetStaticStuff()
+    {
         this.powerUpCountdown = this.defPUC;
         this.pointCountdown = this.defPC;
-	}
-	
-	public void AddNewHighScore(string username, int scorel)//adds highscore to online database
+        this.minX = this.startX;
+        this.x = this.minX;
+        this.phase = this.minPhase;
+    }
+
+    public void setItemBuffer(string newBuffer)
+    {
+        itemBuffer = float.Parse(newBuffer);
+        resetStaticStuff();
+    }
+
+    public void setMinPhase(string newMinPhase)
+    {
+        minPhase = int.Parse(newMinPhase);
+        resetStaticStuff();
+    }
+
+    public void setPhaseLength(string newPhaseLength)
+    {
+        phaseLength = float.Parse(newPhaseLength);
+        resetStaticStuff();
+    }
+
+    public void setPointDuration(string newPointDuration)
+    {
+        pointDuration = float.Parse(newPointDuration);
+        resetStaticStuff();
+    }
+
+    public void setPowerUpDuration(string newPowerUpDuration)
+    {
+        powerUpDuration = float.Parse(newPowerUpDuration);
+        resetStaticStuff();
+    }
+
+    public void setMinPoints(string newMinPoints)
+    {
+        pointValue = int.Parse(newMinPoints);
+        resetStaticStuff();
+    }
+
+    public void setPointFactor(string newPointFactor)
+    {
+        pointFactor = float.Parse(newPointFactor);
+        resetStaticStuff();
+    }
+
+    public void setSpawnFactor(string newSpawnFactor)
+    {
+        spawnFactor = float.Parse(newSpawnFactor);
+        resetStaticStuff();
+    }
+
+    public void setSpawnChance(string newSpawnChance)
+    {
+        spawnChance = int.Parse(newSpawnChance);
+        resetStaticStuff();
+    }
+
+    public void setStartX(string newStartX)
+    {
+        startX = int.Parse(newStartX);
+        resetStaticStuff();
+    }
+
+    public void setMinXInc(string newMinXInc)
+    {
+        minXInc = int.Parse(newMinXInc);
+        resetStaticStuff();
+    }
+
+    public void setDefPUC(string newDefPUC)
+    {
+        defPUC = float.Parse(newDefPUC);
+        resetStaticStuff();
+    }
+
+    public void setDefPC(string newDefPC)
+    {
+        defPC = float.Parse(newDefPC);
+        resetStaticStuff();
+    }
+
+    public void AddNewHighScore(string username, int scorel)//adds highscore to online database
 	{
 		this.StartCoroutine(UploadNewHighscore(username,scorel));
 	}

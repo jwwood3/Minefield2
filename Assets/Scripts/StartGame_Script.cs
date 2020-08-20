@@ -19,7 +19,7 @@ public class StartGame_Script : MonoBehaviour {
         Statics.masterMind.phase = Statics.masterMind.minPhase;
         Statics.masterMind.game = 1;
         Statics.masterMind.x = Statics.masterMind.startX;
-        Statics.masterMind.minX = Statics.masterMind.minX;
+        Statics.masterMind.minX = Statics.masterMind.startX;
     }
 	
 	public void startGame()
@@ -38,6 +38,11 @@ public class StartGame_Script : MonoBehaviour {
 	{
 		SceneManager.LoadScene("Menu");
 	}
+
+    public void devMenu()
+    {
+        SceneManager.LoadScene("DevMenu");
+    }
 	
 	public void menuFromGame()
 	{

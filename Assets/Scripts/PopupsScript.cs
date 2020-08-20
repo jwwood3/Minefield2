@@ -1,17 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Statics;
 
 public class PopupsScript : MonoBehaviour {
 
-    public float life = 3.0f;
+    public bool isPoint;
+    float life;
     float fullLife;
-    float timer = 0.2f;
+    float timer;
     Color trueColor;
     SpriteRenderer sr;
     Collider2D c2D;
 	// Use this for initialization
 	void Start () {
+        timer = Statics.masterMind.itemBuffer;
+        if (isPoint)
+        {
+            life = Statics.masterMind.pointDuration;
+        }
+        else
+        {
+            life = Statics.masterMind.powerUpDuration;
+        }
 		float x = (float)((Random.value*4.3)-2.15);
 		float y= (float)((Random.value*6)-5);
         c2D = this.gameObject.GetComponent<Collider2D>();
