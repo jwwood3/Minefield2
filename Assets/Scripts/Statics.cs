@@ -85,11 +85,11 @@ public class Statics : MonoBehaviour
         switch (spawner)
         {
             case 0:
-                return false;
+                return true;
             case 1:
                 return false;
             case 2:
-                return true;
+                return false;
             case 3:
                 return false;
             case 4:
