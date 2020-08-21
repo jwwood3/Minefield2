@@ -19,13 +19,12 @@ public class Enemy_Script : MonoBehaviour
         Player = GameObject.Find("Player_Sprite");// locates the player
         if (Statics.target(index))
         {
-            
             target = Player.transform.position;// find the player's current position
         }
         else
         {
             //TODO: make these coordinates references - Find x value function
-            target = new Vector3((float)((Random.value * 8) - 4), Player.transform.position.y, 0);// Target random spot on the player's x plane
+            target = new Vector3((float)((Random.value * Statics.masterMind.screenWidth*2) - Statics.masterMind.screenWidth), Player.transform.position.y, 0);// Target random spot on the player's x plane
             //target = new Vector3((float)((Random.value * noise) - (noise/2))+Player.transform.position.x, Player.transform.position.y, 0);// Target random spot on the player's x plane
         }
 

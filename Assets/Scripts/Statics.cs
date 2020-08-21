@@ -9,7 +9,10 @@ using TMPro;
 
 public class Statics : MonoBehaviour
 {
-    public readonly float[,] spawnPoints = { { 0.0f, 4.5f }, { 2.67f, 4.5f }, { -2.67f, 4.5f }, { 5.34f, 4.5f }, { -5.34f, 4.5f }, { 8.0f, 4.5f }, { -8.0f, 4.5f }, { 8.5f, 3.5f }, { -8.5f, 3.5f } };//Array of spawn Points
+    public float screenWidth = 8.9f;
+    public float screenHeight = 5.0f;
+    //public readonly float[,] spawnPoints = { { 0.0f, 4.5f }, { 2.67f, 4.5f }, { -2.67f, 4.5f }, { 5.34f, 4.5f }, { -5.34f, 4.5f }, { 8.0f, 4.5f }, { -8.0f, 4.5f }, { 8.5f, 3.5f }, { -8.5f, 3.5f } };//Array of spawn Points
+    public readonly float[,] spawnPoints = { { 0.0f, 0.90f }, { 0.30f, 0.90f }, { -0.30f, 0.90f }, { 0.60f, 0.90f }, { -0.60f, 0.90f }, { 0.90f, 0.90f }, { -0.90f, 0.90f }, { 0.95f, 0.70f }, { -0.95f, 0.70f } };
     public int numSpawns = 9;
     public int minX;
     public int x;

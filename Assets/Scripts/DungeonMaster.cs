@@ -61,7 +61,7 @@ public class DungeonMaster : MonoBehaviour
             if (Spawns[i] == null && i < Statics.masterMind.phase)
             {
                 print("Added new Spawn");
-                GameObject newSpawn = Instantiate(SpawnMarker, new Vector3(Statics.masterMind.spawnPoints[i, 0], Statics.masterMind.spawnPoints[i, 1], 0.0f), Quaternion.identity);
+                GameObject newSpawn = Instantiate(SpawnMarker, new Vector3(Statics.masterMind.screenWidth*Statics.masterMind.spawnPoints[i, 0], Statics.masterMind.screenHeight*Statics.masterMind.spawnPoints[i, 1], 0.0f), Quaternion.identity);
                 newSpawn.GetComponent<Spawner>().setIndex(i);
                 Spawns[i] = newSpawn;
             }

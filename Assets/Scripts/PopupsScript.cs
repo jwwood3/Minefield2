@@ -25,8 +25,8 @@ public class PopupsScript : MonoBehaviour
         {
             life = Statics.masterMind.powerUpDuration;
         }
-        float x = (float)((Random.value * 16) - 8);
-        float y = (float)((Random.value * 8) - 4);
+        float x = (float)((Random.value * Statics.masterMind.screenWidth*2) - Statics.masterMind.screenWidth);
+        float y = (float)((Random.value * Statics.masterMind.screenHeight*1.5) - (Statics.masterMind.screenHeight*0.75));
         c2D = this.gameObject.GetComponent<Collider2D>();
         sr = this.gameObject.GetComponent<SpriteRenderer>();
         trueColor = sr.color;

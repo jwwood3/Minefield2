@@ -57,7 +57,7 @@ public class Player_Script : MonoBehaviour
 		}*/
         if (Statics.masterMind.gameState != 2)
         {
-#if UNITY_ANDROID
+            #if UNITY_ANDROID
 				if (Input.touchCount > 0) {
 				
 
@@ -94,14 +94,14 @@ public class Player_Script : MonoBehaviour
 						print("Slow");
 					}
 				}
-#endif
+            #endif
 
-#if UNITY_STANDALONE
+            #if UNITY_STANDALONE
 				Vector3 screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 				Vector3 cursorPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
 				Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint);
 				transform.position = cursorPosition;
-#endif
+            #endif
         }
         else
         {
@@ -180,9 +180,9 @@ public class Player_Script : MonoBehaviour
         Statics.masterMind.minX = Statics.masterMind.startX;
         Statics.masterMind.phase = Statics.masterMind.minPhase;
         Statics.masterMind.game = 1;
-#if UNITY_STANDALONE
-		Cursor.visible=true;
-#endif
+        #if UNITY_STANDALONE
+		    Cursor.visible=true;
+        #endif
 
     }
 
