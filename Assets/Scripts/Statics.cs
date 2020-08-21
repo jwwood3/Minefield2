@@ -9,7 +9,8 @@ using TMPro;
 
 public class Statics : MonoBehaviour
 {
-    public readonly float[,] spawnPoints = { { 0.0f, 4.5f }, { 2.67f, 4.5f }, { -2.67f, 4.5f }, { 5.34f, 4.5f }, { -5.34f, 4.5f }, { 8.0f, 4.5f }, { -8.0f, 4.5f } };//Array of spawn Points
+    public readonly float[,] spawnPoints = { { 2.67f, 4.5f }, { -2.67f, 4.5f }, { 0.0f, 4.5f }, { 5.34f, 4.5f }, { -5.34f, 4.5f }, { 8.0f, 4.5f }, { -8.0f, 4.5f }, { 8.5f, 3.5f }, { -8.5f, 3.5f } };//Array of spawn Points
+    public int numSpawns = 9;
     public int minX;
     public int x;
     public readonly float[,] cameraCorners = { { -15, 15 }, { 15, -15 } };//Coords of topLeft and bottomRight corners of FOV for destroying offScreen objects.
@@ -24,6 +25,7 @@ public class Statics : MonoBehaviour
     public float powerUpCountdown;
     public float pointCountdown;
     public static Statics masterMind;
+    public int currentScore;
 
     //DevFlags
     public float itemBuffer = 0.2f;//How long after item spawn can items be picked up
@@ -76,6 +78,29 @@ public class Statics : MonoBehaviour
         print("scorerlength:" + Statics.masterMind.HighScorers.Length);
 
 
+    }
+
+    public static bool target(int spawner)
+    {
+        switch (spawner)
+        {
+            case 0:
+                return false;
+            case 1:
+                return false;
+            case 2:
+                return true;
+            case 3:
+                return false;
+            case 4:
+                return false;
+            case 5:
+                return true;
+            case 6:
+                return true;
+            default:
+                return false;
+        }
     }
 
     public void fillTextBoxes()

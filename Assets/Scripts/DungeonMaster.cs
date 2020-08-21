@@ -23,7 +23,7 @@ public class DungeonMaster : MonoBehaviour
     public GameObject PointPiece;
     public GameObject SpawnMarker;
 
-    public GameObject[] Spawns = { null, null, null, null, null };
+    public GameObject[] Spawns = new GameObject[Statics.masterMind.numSpawns];
     // Use this for initialization
     void Start()
     {
@@ -62,6 +62,7 @@ public class DungeonMaster : MonoBehaviour
             {
                 print("Added new Spawn");
                 GameObject newSpawn = Instantiate(SpawnMarker, new Vector3(Statics.masterMind.spawnPoints[i, 0], Statics.masterMind.spawnPoints[i, 1], 0.0f), Quaternion.identity);
+                newSpawn.GetComponent<Spawner>().setIndex(i);
                 Spawns[i] = newSpawn;
             }
             if ((Spawns[i] != null) && i >= Statics.masterMind.phase)
@@ -200,6 +201,8 @@ public class DungeonMaster : MonoBehaviour
                 Statics.masterMind.x++;
                 timer2 = timer2 - 1.0f;
             }
+
+            Statics.masterMind.currentScore = curScore;
         }
     }
 }
