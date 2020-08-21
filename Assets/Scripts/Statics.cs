@@ -27,20 +27,22 @@ public class Statics : MonoBehaviour
 
     //DevFlags
     public float itemBuffer = 0.2f;//How long after item spawn can items be picked up
-    public int minPhase = 2;//Number of spawns at the beginning of the game
-    public float phaseLength = 30.0f;//How long before another spawner appears and spawn rate resets
+    public int minPhase = 2;//Number of enemy spawners at the beginning of the game
+    public float phaseLength = 30.0f;//Duration of a phase. i.e. How long before another spawner appears and spawn rate resets
     public float pointDuration = 2.5f;//How long point pickups remain on the screen before despawning
-    public float powerUpDuration = 1.5f;//"  "   power up   "     "    "  "     "      "        "
+    public float powerUpDuration = 1.5f;//"  "   screen clears   "     "    "  "     "      "        "
     public int pointValue = 5;//Starting point value of point pickups
-    public float pointFactor = 12.0f;//multiplier in logarithmic equation for point value growth as level increases
-    public float spawnFactor = 8.0f;//multiplier in equation for spawn chance as phase increases
+    public float pointFactor = 12.0f;//multiplier in logarithmic equation for point value growth as round increases.
+                                     //Higher value means point value increases faster.
+    public float spawnFactor = 8.0f;//multiplier in equation for spawn chance as number of spawners increases.
+                                    //Higher value means spawn chance decreases more with every new spawner
     public int spawnChance = 100;//Base spawn chance in phase 1 at the beginning of the phase
-    public int startX = 20;//Starting value for minX and x, x balls spawn every startX seconds, so higher means spawn rate increases more slowly and vice versa
-    public int minXInc = 5;//Increment for minX when level increases
-    public float defPUC = 20.0f;//Time in between power up spawns
+    public int startX = 20;//Higher value means spawn rate increases more slowly during the phase
+    public int minXInc = 5;//Increment for minimum spawn rate when round increases
+    public float defPUC = 20.0f;//Time in between screen clear spawns
     public float defPC = 5.0f;//Time in between point spawns
     public float enemySpeed = 0.5f;//Base speed of enemy bullets
-    public bool shouldTarget = false;
+    public bool shouldTarget = false;//Whether the enemy bullets target the player or fire randomly
 
 
 
