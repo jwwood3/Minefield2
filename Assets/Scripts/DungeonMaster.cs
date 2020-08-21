@@ -30,8 +30,8 @@ public class DungeonMaster : MonoBehaviour {
 		//timer3 = 0.0f;
         phaseCounter = 0.0f;
         curScore  = 0;
-        Statics.masterMind.pointCountdown = 5.0f;
-        Statics.masterMind.powerUpCountdown = 20.0f;
+        Statics.masterMind.pointCountdown = Statics.masterMind.defPC;
+        Statics.masterMind.powerUpCountdown = Statics.masterMind.defPUC;
         resetSpawnMarkers();
     }
 
@@ -41,14 +41,14 @@ public class DungeonMaster : MonoBehaviour {
         timer2 = 0.0f;
         //timer3 = 0.0f;
         phaseCounter = 0.0f;
-        Statics.masterMind.pointCountdown = 5.0f;
-        Statics.masterMind.powerUpCountdown = 20.0f;
+        Statics.masterMind.pointCountdown = Statics.masterMind.defPC;
+        Statics.masterMind.powerUpCountdown = Statics.masterMind.defPUC;
         Statics.masterMind.x = Statics.masterMind.minX;
     }
 
     public void scorePoints(int points)
     {
-        curScore += (int)Mathf.Floor((12.0f*Mathf.Log10((float)Statics.masterMind.game)+(float)points)+0.5f);
+        curScore += (int)Mathf.Floor((Statics.masterMind.pointFactor*Mathf.Log10((float)Statics.masterMind.game)+(float)points)+0.5f);
     }
 
     public void resetSpawnMarkers()
@@ -137,7 +137,7 @@ public class DungeonMaster : MonoBehaviour {
 
             
 
-			if(phaseCounter>=Statics.masterMind.startX)//WIP - resets x when the phase increases
+			if(phaseCounter>=Statics.masterMind.phaseLength)//WIP - resets x when the phase increases
 			{
 				Statics.masterMind.phase++;
 				if(Statics.masterMind.phase>5)
@@ -145,7 +145,7 @@ public class DungeonMaster : MonoBehaviour {
 					Statics.masterMind.phase=5;
 				}
                 Statics.masterMind.x = Statics.masterMind.minX;
-                phaseCounter -= Statics.masterMind.startX;
+                phaseCounter -= Statics.masterMind.phaseLength;
 
             }
 
@@ -178,7 +178,7 @@ public class DungeonMaster : MonoBehaviour {
             {
                 subtractor += 100;
                 Statics.masterMind.game++;
-                Statics.masterMind.minX += 5;
+                Statics.masterMind.minX += Statics.masterMind.minXInc;
                 Statics.masterMind.x = Statics.masterMind.minX;
                 Statics.masterMind.phase --;
                 if (Statics.masterMind.phase < 1)

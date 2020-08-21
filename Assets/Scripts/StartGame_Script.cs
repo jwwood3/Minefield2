@@ -19,7 +19,7 @@ public class StartGame_Script : MonoBehaviour {
         Statics.masterMind.phase = Statics.masterMind.minPhase;
         Statics.masterMind.game = 1;
         Statics.masterMind.x = Statics.masterMind.startX;
-        Statics.masterMind.minX = Statics.masterMind.minX;
+        Statics.masterMind.minX = Statics.masterMind.startX;
     }
 	
 	public void startGame()
@@ -38,8 +38,102 @@ public class StartGame_Script : MonoBehaviour {
 	{
 		SceneManager.LoadScene("Menu");
 	}
-	
-	public void menuFromGame()
+
+    public void devMenu()
+    {
+        SceneManager.LoadScene("DevMenu");
+    }
+
+    public void fillTextBoxes()
+    {
+        Statics.masterMind.fillTextBoxes();
+    }
+
+    public void setItemBuffer(string newBuffer)
+    {
+        Statics.masterMind.itemBuffer = float.Parse(newBuffer);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setMinPhase(string newMinPhase)
+    {
+        Statics.masterMind.minPhase = int.Parse(newMinPhase);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setPhaseLength(string newPhaseLength)
+    {
+        Statics.masterMind.phaseLength = float.Parse(newPhaseLength);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setPointDuration(string newPointDuration)
+    {
+        Statics.masterMind.pointDuration = float.Parse(newPointDuration);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setPowerUpDuration(string newPowerUpDuration)
+    {
+        Statics.masterMind.powerUpDuration = float.Parse(newPowerUpDuration);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setMinPoints(string newMinPoints)
+    {
+        Statics.masterMind.pointValue = int.Parse(newMinPoints);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setPointFactor(string newPointFactor)
+    {
+        Statics.masterMind.pointFactor = float.Parse(newPointFactor);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setSpawnFactor(string newSpawnFactor)
+    {
+        Statics.masterMind.spawnFactor = float.Parse(newSpawnFactor);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setSpawnChance(string newSpawnChance)
+    {
+        Statics.masterMind.spawnChance = int.Parse(newSpawnChance);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setStartX(string newStartX)
+    {
+        Statics.masterMind.startX = int.Parse(newStartX);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setMinXInc(string newMinXInc)
+    {
+        Statics.masterMind.minXInc = int.Parse(newMinXInc);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setDefPUC(string newDefPUC)
+    {
+        Statics.masterMind.defPUC = float.Parse(newDefPUC);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setDefPC(string newDefPC)
+    {
+        Statics.masterMind.defPC = float.Parse(newDefPC);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void setEnemySpeed(string newEnemySpeed)
+    {
+        Statics.masterMind.enemySpeed = float.Parse(newEnemySpeed);
+        Statics.masterMind.resetStaticStuff();
+    }
+
+    public void menuFromGame()
 	{
 		foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Winner"))
 		{

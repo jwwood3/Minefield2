@@ -11,7 +11,7 @@ public class Enemy_Script : MonoBehaviour {
 	private Vector3 tempVector;
 	// Use this for initialization
 	void Start () {
-		speed = 0.5f;
+		speed = Statics.masterMind.enemySpeed;
 		//Set Position to a random open spawn Point
 		/*Vector3 temp = new Vector3(0,0,0);
 		int temp2 = Random.Range(0,Statics.masterMind.phase);

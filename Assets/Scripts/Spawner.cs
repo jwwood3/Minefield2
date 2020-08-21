@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
             {
                 //print("right time to spawn");
                 timer -= interval;
-                if (Random.Range(1, 101) < ((Statics.masterMind.spawnChance-(8*(Statics.masterMind.phase-1)))+(Statics.masterMind.x-Statics.masterMind.minX)))
+                if (Random.Range(1, 101) < ((Statics.masterMind.spawnChance-(Statics.masterMind.spawnFactor*(Statics.masterMind.phase-1)))+(Statics.masterMind.x-Statics.masterMind.minX)))
                 {
                     //print("random spawn achieved");
                     Instantiate(Enemy, this.transform.position, Quaternion.identity);
