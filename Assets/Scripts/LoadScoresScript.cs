@@ -4,12 +4,13 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class LoadScoresScript : MonoBehaviour {
-	public TextMeshProUGUI[] scoreLabels = new TextMeshProUGUI[10];
-	public TextMeshProUGUI[] scorerLabels = new TextMeshProUGUI[10];
+public class LoadScoresScript : MonoBehaviour
+{
+    public TextMeshProUGUI[] scoreLabels = new TextMeshProUGUI[10];
+    public TextMeshProUGUI[] scorerLabels = new TextMeshProUGUI[10];
     public TextMeshProUGUI ButtonLabel;
-	public TextMeshProUGUI place;
-	public bool isLocal=true;
+    public TextMeshProUGUI place;
+    public bool isLocal = true;
     void Start()
     {
         getScoreLabels();
@@ -18,16 +19,16 @@ public class LoadScoresScript : MonoBehaviour {
 
     public void getScoreLabels()
     {
-        for(int i = 1; i <= 10; i++)
+        for (int i = 1; i <= 10; i++)
         {
             scoreLabels[i - 1] = GameObject.Find(i.ToString() + "_Score").GetComponent<TextMeshProUGUI>();
             scorerLabels[i - 1] = GameObject.Find(i.ToString() + "User_Label").GetComponent<TextMeshProUGUI>();
         }
     }
-	
-	
-	public void refresh(int includeOnline)
-	{
+
+
+    public void refresh(int includeOnline)
+    {
         if (includeOnline == 1)
         {
             Statics.masterMind.downloadHighscores();
@@ -48,7 +49,7 @@ public class LoadScoresScript : MonoBehaviour {
                 }
 
             }
-            else if(includeOnline==1)
+            else if (includeOnline == 1)
             {
                 if (Statics.masterMind.scoreList.Length > i)
                 {
@@ -87,21 +88,21 @@ public class LoadScoresScript : MonoBehaviour {
             }
         }
     }
-	
-	public void switchLists()
-	{
-		isLocal=!isLocal;
-		if(isLocal)
-		{
-			ButtonLabel.text="Online";
-		}
-		else
-		{
-			ButtonLabel.text="Local";
-		}
+
+    public void switchLists()
+    {
+        isLocal = !isLocal;
+        if (isLocal)
+        {
+            ButtonLabel.text = "Online";
+        }
+        else
+        {
+            ButtonLabel.text = "Local";
+        }
         refresh(1);
-	}
-	/*public TextMeshProUGUI first;
+    }
+    /*public TextMeshProUGUI first;
 	public TextMeshProUGUI second;
 	public TextMeshProUGUI third;
 	public TextMeshProUGUI fourth;
@@ -134,14 +135,15 @@ public class LoadScoresScript : MonoBehaviour {
 		tenth.text=((float)(Mathf.FloorToInt(Statics.masterMind.HighScores[9]*10))/10.0f).ToString();
 		tenthUser.text=Statics.masterMind.HighScorers[9];
 	}*/
-	
-	public void menu()
-	{
-		SceneManager.LoadScene("Menu");
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public void menu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         refresh(0);
-	}
+    }
 }
