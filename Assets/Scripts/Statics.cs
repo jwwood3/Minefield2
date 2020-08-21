@@ -75,12 +75,20 @@ public class Statics : MonoBehaviour
 
     void Start()
     {
+        setScreenSize();
         resetStaticStuff();
         fillTextBoxes();
         print("scorelength:" + Statics.masterMind.HighScores.Length);
         print("scorerlength:" + Statics.masterMind.HighScorers.Length);
 
 
+    }
+
+    void setScreenSize()
+    {
+        Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        screenHeight = screenBounds.y;
+        screenWidth = screenBounds.x;
     }
 
     public static bool target(int spawner)
