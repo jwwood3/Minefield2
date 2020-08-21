@@ -9,7 +9,7 @@ using TMPro;
 
 public class Statics : MonoBehaviour
 {
-    public readonly float[,] spawnPoints = { { 2.67f, 4.5f }, { -2.67f, 4.5f }, { 0.0f, 4.5f }, { 5.34f, 4.5f }, { -5.34f, 4.5f }, { 8.0f, 4.5f }, { -8.0f, 4.5f }, { 8.5f, 3.5f }, { -8.5f, 3.5f } };//Array of spawn Points
+    public readonly float[,] spawnPoints = { { 0.0f, 4.5f }, { 2.67f, 4.5f }, { -2.67f, 4.5f }, { 5.34f, 4.5f }, { -5.34f, 4.5f }, { 8.0f, 4.5f }, { -8.0f, 4.5f }, { 8.5f, 3.5f }, { -8.5f, 3.5f } };//Array of spawn Points
     public int numSpawns = 9;
     public int minX;
     public int x;
@@ -29,8 +29,8 @@ public class Statics : MonoBehaviour
 
     //DevFlags
     public float itemBuffer = 0.2f;//How long after item spawn can items be picked up
-    public int minPhase = 2;//Number of enemy spawners at the beginning of the game
-    public float phaseLength = 30.0f;//Duration of a phase. i.e. How long before another spawner appears and spawn rate resets
+    public int minPhase = 1;//Number of enemy spawners at the beginning of the game
+    public float phaseLength = 20.0f;//Duration of a phase. i.e. How long before another spawner appears and spawn rate resets
     public float pointDuration = 2.5f;//How long point pickups remain on the screen before despawning
     public float powerUpDuration = 1.5f;//"  "   screen clears   "     "    "  "     "      "        "
     public int pointValue = 5;//Starting point value of point pickups
@@ -41,7 +41,7 @@ public class Statics : MonoBehaviour
     public int spawnChance = 100;//Base spawn chance in phase 1 at the beginning of the phase
     public int startX = 20;//Higher value means spawn rate increases more slowly during the phase
     public int minXInc = 5;//Increment for minimum spawn rate when round increases
-    public float defPUC = 20.0f;//Time in between screen clear spawns
+    public float defPUC = 25.0f;//Time in between screen clear spawns
     public float defPC = 5.0f;//Time in between point spawns
     public float enemySpeed = 0.5f;//Base speed of enemy bullets
     public bool shouldTarget = false;//Whether the enemy bullets target the player or fire randomly

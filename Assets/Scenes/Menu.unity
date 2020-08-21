@@ -524,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4157771288529068, guid: 0be297af096cdff4eb4827320b65edd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.52321863
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4157771288529068, guid: 0be297af096cdff4eb4827320b65edd3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -568,13 +568,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114590611587045786, guid: 0be297af096cdff4eb4827320b65edd3,
         type: 3}
-      propertyPath: phase
-      value: 3
+      propertyPath: defPUC
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 114590611587045786, guid: 0be297af096cdff4eb4827320b65edd3,
         type: 3}
-      propertyPath: minPhase
-      value: 3
+      propertyPath: powerUpCountdown
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114590611587045786, guid: 0be297af096cdff4eb4827320b65edd3,
+        type: 3}
+      propertyPath: phaseLength
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0be297af096cdff4eb4827320b65edd3, type: 3}
