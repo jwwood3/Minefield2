@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Statics;
 
-public class PopupsScript : MonoBehaviour {
+public class PopupsScript : MonoBehaviour
+{
 
     public bool isPoint;
     float life;
@@ -12,8 +13,9 @@ public class PopupsScript : MonoBehaviour {
     Color trueColor;
     SpriteRenderer sr;
     Collider2D c2D;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         timer = Statics.masterMind.itemBuffer;
         if (isPoint)
         {
@@ -23,16 +25,16 @@ public class PopupsScript : MonoBehaviour {
         {
             life = Statics.masterMind.powerUpDuration;
         }
-		float x = (float)((Random.value*4.3)-2.15);
-		float y= (float)((Random.value*6)-5);
+        float x = (float)((Random.value * Statics.masterMind.screenWidth*2) - Statics.masterMind.screenWidth);
+        float y = (float)((Random.value * Statics.masterMind.screenHeight*1.2) - Statics.masterMind.screenHeight);
         c2D = this.gameObject.GetComponent<Collider2D>();
         sr = this.gameObject.GetComponent<SpriteRenderer>();
         trueColor = sr.color;
         sr.color = Color.yellow;
         c2D.enabled = false;
-        this.gameObject.transform.position=new Vector3(x,y,1);
+        this.gameObject.transform.position = new Vector3(x, y, 1);
         fullLife = life;
-	}
+    }
 
     void FixedUpdate()
     {
@@ -42,7 +44,7 @@ public class PopupsScript : MonoBehaviour {
         }
         else
         {
-            if(life == fullLife)
+            if (life == fullLife)
             {
                 c2D.enabled = true;
                 sr.color = trueColor;
@@ -54,6 +56,6 @@ public class PopupsScript : MonoBehaviour {
             }
         }
     }
-	
-	
+
+
 }

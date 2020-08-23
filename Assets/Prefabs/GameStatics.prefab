@@ -43,11 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2535a750bab8742894f796fb04233e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  screenWidth: 8.9
+  screenHeight: 5
+  numSpawns: 9
   minX: 20
-  startX: 20
   x: 20
-  phase: 2
-  minPhase: 2
+  phase: 1
   game: 1
   gameState: 1
   HighScores:
@@ -75,8 +76,21 @@ MonoBehaviour:
   score: 0
   hasLoadedYet: 0
   currentUser: Player 1
-  hasPowerUp: 0
-  powerUpCountdown: 20
+  powerUpCountdown: 25
   pointCountdown: 5
+  currentScore: 0
+  itemBuffer: 0.2
+  minPhase: 1
+  phaseLength: 20
+  pointDuration: 2.5
+  powerUpDuration: 1.5
   pointValue: 5
+  pointFactor: 12
+  spawnFactor: 8
   spawnChance: 100
+  startX: 20
+  minXInc: 5
+  defPUC: 25
+  defPC: 5
+  enemySpeed: 0.5
+  shouldTarget: 0
