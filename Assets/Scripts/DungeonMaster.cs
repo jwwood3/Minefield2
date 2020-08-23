@@ -23,10 +23,11 @@ public class DungeonMaster : MonoBehaviour
     public GameObject PointPiece;
     public GameObject SpawnMarker;
 
-    public GameObject[] Spawns = new GameObject[Statics.masterMind.numSpawns];
+    public GameObject[] Spawns;
     // Use this for initialization
     void Start()
     {
+        Spawns = new GameObject[Statics.masterMind.numSpawns];
         timer = 0.0f;
         timer2 = 0.0f;
         //timer3 = 0.0f;
