@@ -6,11 +6,17 @@ using static Statics;
 public class Spawner : MonoBehaviour
 {
     float timer = 0.0f;
+    int index;
     public GameObject Enemy;
     // Start is called before the first frame update
     void Start()
     {
         this.timer = 0.0f;
+    }
+
+    public void setIndex(int i)
+    {
+        index = i;
     }
 
     // Update is called once per frame
@@ -24,10 +30,11 @@ public class Spawner : MonoBehaviour
             {
                 //print("right time to spawn");
                 timer -= interval;
-                if (Random.Range(1, 101) < ((Statics.masterMind.spawnChance-(Statics.masterMind.spawnFactor*(Statics.masterMind.phase-1)))+(Statics.masterMind.x-Statics.masterMind.minX)))
+                if (Random.Range(1, 101) < ((Statics.masterMind.spawnChance - (Statics.masterMind.spawnFactor * (Statics.masterMind.phase - 1))) + (Statics.masterMind.x - Statics.masterMind.minX)))
                 {
                     //print("random spawn achieved");
-                    Instantiate(Enemy, this.transform.position, Quaternion.identity);
+                    GameObject enem = Instantiate(Enemy, this.transform.position, Quaternion.identity);
+                    enem.GetComponent<Enemy_Script>().setIndex(index);
                 }
             }
             timer += Time.fixedDeltaTime;
